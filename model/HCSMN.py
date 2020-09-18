@@ -18,16 +18,16 @@ use_cuda = torch.cuda.is_available()
 
 
 # Hybrid Context Session Model
-class HCSMN(nn.Module):
+class HSCMN(nn.Module):
     def __init__(self, args):
-        super(HCSMN, self).__init__()
+        super(HSCMN, self).__init__()
         self.args = args
         self.hidden_size = args.hidden_size
         self.batch_size = args.batch_size
         self.embed_size = args.embed_size
         self.topic_len = args.topic_len
 
-        self.logger = logging.getLogger("HCSM")
+        self.logger = logging.getLogger("HSCM")
         self.dropout_rate = args.dropout_rate
         self.softmax = nn.Softmax(dim=0)
 

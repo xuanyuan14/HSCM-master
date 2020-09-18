@@ -10,7 +10,7 @@ import numpy as np
 from tqdm import tqdm
 from tensorboardX import SummaryWriter
 from torch import nn
-from HCSMN import HCSMN
+from HSCMN import HSCMN
 
 use_cuda = torch.cuda.is_available()
 MINF = 1e-30
@@ -24,7 +24,7 @@ class Model(object):
         self.args = args
 
         # logging
-        self.logger = logging.getLogger("HCSM")
+        self.logger = logging.getLogger("HSCM")
 
         # basic config
         self.hidden_size = args.hidden_size
@@ -39,7 +39,7 @@ class Model(object):
         if args.train:
             self.writer = SummaryWriter(self.args.summary_dir)
 
-        self.model = HCSMN(self.args)
+        self.model = HSCMN(self.args)
 
         if args.data_parallel:
             self.model = nn.DataParallel(self.model)
