@@ -424,7 +424,7 @@ class HSCMN(nn.Module):
                     else:
                         dr_loss -= torch.log(click_probs[b_idx][position_idx].view(1) + 1e-30)
 
-            loss = 0.9 * dr_loss + 0.1 * qs_loss
+            loss = 0.9 * dr_loss + 0.1 * qs_loss # multi-task learning
             if loss != 0.:
                 loss.backward()
 
